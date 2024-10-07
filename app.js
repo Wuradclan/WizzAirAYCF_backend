@@ -7,6 +7,7 @@ const Flight = require('./models/Flight.js');
 const connectDB = require('./config/db.js');
 const dotenv = require('dotenv');
 const cors = require('cors');  // Import CORS
+const path = './tmp';  // Specify the path to check
 
 
 // Initialize environment variables
@@ -26,7 +27,14 @@ app.use(cors({
     origin: 'https://sample-nodejs-app-production.up.railway.app',  // Replace with the actual frontend URL
   }));
 
-
+// Check if /tmp folder exists
+if (!fs.existsSync(path)) {
+    // If it doesn't exist, create the folder
+    fs.mkdirSync(path);
+    console.log('/tmp folder created');
+  } else {
+    console.log('/tmp folder already exists');
+}
 
 // Routes
 app.use('/api/flights/', require('./routes/flightRoutes.js'));
