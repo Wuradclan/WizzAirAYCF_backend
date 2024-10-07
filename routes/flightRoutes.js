@@ -196,9 +196,8 @@ router.get('/', async(req, res) => {
 
       // Return the matching arrivals
       const availableArrivals = filteredFlights.map(route => route.get('Arrival'));
-      console.log(departure); 
       const newFlight = new Flight({ IpAddr:ipAddress, departureCity:departure ,arrivalCity: arrival  });
-      console.log(newFlight);
+
       await newFlight.save(); // Save the flight to MongoDB
       return res.json({
           departureCity: departure,
@@ -215,9 +214,7 @@ router.get('/', async(req, res) => {
 
     // Return the matching departures
     const availableDepartures = filteredFlights.map(route => route.get('Departure'));
-    console.log(arrival);  // Log the arrival city for debugging
     const newFlight = new Flight({ IpAddr:ipAddress, departureCity:departure , arrivalCity: arrival  });
-    console.log(newFlight); 
     await newFlight.save(); // Save the flight to MongoDB
     return res.json({
         arrivalCity: arrival,
