@@ -180,7 +180,7 @@ router.get('/', async(req, res) => {
     
     // If neither departure nor arrival is provided, return an error
     if (!departure && !arrival) {
-      return res.status(400).json({ error: 'Please provide either a departure or arrival city.' });
+      return res.status(400).json({ error: 'Please provide either a departure or arrival city. For example after the Url : /api/flight?departure=London' });
   }
 
     // Filter the flight routes based on the provided city
