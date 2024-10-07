@@ -171,7 +171,7 @@ async function splitLines() {
 
 
 // Define the API route
-router.get('/search', async(req, res) => {
+router.get('/', async(req, res) => {
   const departure = req.query.departure;
   const arrival = req.query.arrival;
   try {

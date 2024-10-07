@@ -23,9 +23,7 @@ const app = express();
 app.use(express.json()); 
 
 // Enable CORS (Allowing localhost:3001)
-app.use(cors({
-    origin: 'https://sample-nodejs-app-production.up.railway.app',  // Replace with the actual frontend URL
-  }));
+app.use(cors());
 
 // Check if /tmp folder exists
 if (!fs.existsSync(path)) {
