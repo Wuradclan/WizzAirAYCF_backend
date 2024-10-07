@@ -3,8 +3,9 @@ const mongoose = require('mongoose');
 
 const FlightSchema = new mongoose.Schema({
 
+        IpAddr: { type: String},
         departureCity: { type: String},
-        arrivalCity: {String},
+        arrivalCity: { type: String},
         createdAt: { type: Date, default: Date.now }
     
 });

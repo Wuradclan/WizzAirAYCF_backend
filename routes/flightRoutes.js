@@ -53,7 +53,7 @@ function loadCitiesData() {
       // Parse the JSON file content to an array
       const cityArray = JSON.parse(data);
       
-      console.log('Loaded flight data:', cityArray);
+      //console.log('Loaded flight data:', cityArray);
       return cityArray;
   } catch (err) {
       console.error('Error loading flight data:', err);
@@ -176,6 +176,7 @@ router.get('/', async(req, res) => {
   const arrival = req.query.arrival;
   try {
     const flights = await splitLines();
+    const ipAddress = req.ip;
     
     // If neither departure nor arrival is provided, return an error
     if (!departure && !arrival) {
@@ -195,7 +196,9 @@ router.get('/', async(req, res) => {
 
       // Return the matching arrivals
       const availableArrivals = filteredFlights.map(route => route.get('Arrival'));
-      const newFlight = new Flight({ departure, arrival });
+      console.log(departure); 
+      const newFlight = new Flight({ IpAddr:ipAddress, departureCity:departure ,arrivalCity: arrival  });
+      console.log(newFlight);
       await newFlight.save(); // Save the flight to MongoDB
       return res.json({
           departureCity: departure,
@@ -212,7 +215,9 @@ router.get('/', async(req, res) => {
 
     // Return the matching departures
     const availableDepartures = filteredFlights.map(route => route.get('Departure'));
-    const newFlight = new Flight({ departure, arrival });
+    console.log(arrival);  // Log the arrival city for debugging
+    const newFlight = new Flight({ IpAddr:ipAddress, departureCity:departure , arrivalCity: arrival  });
+    console.log(newFlight); 
     await newFlight.save(); // Save the flight to MongoDB
     return res.json({
         arrivalCity: arrival,

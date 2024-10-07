@@ -25,6 +25,8 @@ app.use(express.json());
 // Enable CORS (Allowing localhost:3001)
 app.use(cors());
 
+app.set('trust proxy', true);
+
 // Check if /tmp folder exists
 if (!fs.existsSync(path)) {
     // If it doesn't exist, create the folder
@@ -33,7 +35,7 @@ if (!fs.existsSync(path)) {
   } else {
     console.log('/tmp folder already exists');
 }
-
+app.use('/', require('./routes/flightRoutes.js'));
 // Routes
 app.use('/api/flights/', require('./routes/flightRoutes.js'));
 
