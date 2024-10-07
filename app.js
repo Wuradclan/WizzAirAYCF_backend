@@ -6,6 +6,7 @@ const pdf = require('pdf-parse');
 const Flight = require('./models/Flight.js');
 const connectDB = require('./config/db.js');
 const dotenv = require('dotenv');
+const cors = require('cors');  // Import CORS
 
 
 // Initialize environment variables
@@ -21,6 +22,9 @@ const app = express();
 app.use(express.json()); 
 
 // Enable CORS (Allowing localhost:3001)
+app.use(cors({
+    origin: 'https://sample-nodejs-app-production.up.railway.app',  // Replace with the actual frontend URL
+  }));
 
 
 
