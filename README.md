@@ -1,6 +1,6 @@
 Query Parameters: The route accepts two possible query parameters: departure and arrival. You only need to provide one of them.
 
-Example: /api/flights?departure=New York or /api/flights?arrival=Paris.
+Example: /api/flights?departure=Londonor /api/flights?arrival=Paris.
 
 Filter Flights:
 
@@ -12,4 +12,4 @@ If the departure city is sent, it returns all possible arrival cities from that 
 If the arrival city is sent, it returns all possible departure cities.
 Error Handling: It handles cases where neither a departure nor an arrival is sent and returns a 400 error. It also handles cases where no flights are found by returning a 404 error.
 Example API Usage
-Request 1: /api/flights?departure=New York
+Request 1: /api/flights?departure=London
